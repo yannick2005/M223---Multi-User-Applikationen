@@ -32,7 +32,7 @@ public class BookingService {
 
     @Transactional
     public Booking updateBooking(Long id, Booking booking) {
-        booking.SetId(id);
+        booking.setId(id);
         return entityManager.merge(booking);
     }
 
