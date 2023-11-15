@@ -1,9 +1,44 @@
 package ch.zli.m223.service;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.jwt.JsonWebToken;
+
+import ch.zli.m223.model.User;
+
+import io.smallrye.jwt.build.Jwt;
+
+@ApplicationScoped
 public class AuthentificationService {
     @Inject
-    EntityManager entityManager;
+    UserService userService;
+
+    @Inject
+    JsonWebToken jwt;
+
+    @Transactional
+    public String login(String email, String password) {
+        List<User> users = userService.listAll();
+        String jwt = "";
+        for (User user : users) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                String token = Jwt.issuer("https://example.com/issuer")
+                        .upn(user.getEmail())
+                        .groups(user.getRole().getRole())
+                        .expiresIn(Integer.MAX_VALUE)
+                        .sign();
+                return jwt = token;
+            }
+        }
+        throw new IllegalArgumentException("UNAUTHORIZED");
+    }
+
+    public Response logout(String token) {
+        return Response.ok(token).build();
+    }
 }

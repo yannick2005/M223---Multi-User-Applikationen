@@ -13,7 +13,6 @@ import java.util.List;
 @Path("/user")
 @Tag(name = "User", description = "Handling of users")
 public class UserController {
-
     @Inject
     UserService userService;
 

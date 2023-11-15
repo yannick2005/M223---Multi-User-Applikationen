@@ -11,10 +11,8 @@ import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class UserService {
-
     @Inject
     EntityManager entityManager;
-
 
     public List<User> listAll() {
         var query = entityManager.createQuery("FROM User", User.class);
@@ -41,5 +39,4 @@ public class UserService {
         User entity = entityManager.find(User.class, id);
         entityManager.remove(entity);
     }
-
 }

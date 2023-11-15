@@ -1,39 +1,44 @@
 package ch.zli.m223.service;
 
-import ch.zli.m223.model.Booking;
-
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+
+import ch.zli.m223.model.Booking;
+import javax.persistence.EntityManager;
 
 @ApplicationScoped
 public class BookingService {
-
     @Inject
     EntityManager entityManager;
 
-    public List<Booking> listAll(){
-        var query = entityManager.createQuery("FROM Booking", Booking.class);
+    @SuppressWarnings("unchecked")
+    public List<Booking> findAll() {
+        var query = entityManager.createQuery("FROM Booking");
         return query.getResultList();
+    }
+
+    public Booking findById(Long id) {
+        return entityManager.find(Booking.class, id);
     }
 
     @Transactional
     public Booking createBooking(Booking booking) {
         entityManager.persist(booking);
         return booking;
-    }
+    }    
 
     @Transactional
-    public Booking updateBooking(Booking booking) {
+    public Booking updateBooking(Long id, Booking booking) {
+        booking.SetId(id);
         return entityManager.merge(booking);
     }
 
     @Transactional
-    public void deleteBooking(Long id){
-        Booking entity = entityManager.find(Booking.class, id);
-        entityManager.remove(entity);
+    public void deleteBooking(Long id) {
+        Booking booking = entityManager.find(Booking.class, id);
+        entityManager.remove(booking);
     }
 }

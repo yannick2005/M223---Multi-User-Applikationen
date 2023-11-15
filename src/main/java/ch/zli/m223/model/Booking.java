@@ -6,4 +6,8 @@ import javax.persistence.EntityManager;
 public class Booking {
     @Inject
     EntityManager entityManager;
+
+    public void SetId(Long id){
+        
+    }
 }

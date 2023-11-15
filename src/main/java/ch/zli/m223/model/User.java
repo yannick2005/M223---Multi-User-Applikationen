@@ -7,6 +7,8 @@ import javax.validation.constraints.Size;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "coworking_user")
 public class User {
@@ -31,6 +33,10 @@ public class User {
     @NotEmpty
     private String password;
     private int age;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Role role;
 
     @Size(min = 1, max = 20)
     private String description;
@@ -89,5 +95,13 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Role getRole(){
+        return role;
+    }
+
+    public void setRole(Role role){
+        this.role = role;
     }
 }

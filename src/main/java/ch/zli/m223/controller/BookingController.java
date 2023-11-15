@@ -23,7 +23,7 @@ public class BookingController {
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed("member")
     public List<Booking> getAllBookings(){
-        return bookingService.listAll();
+        return bookingService.findAll();
     }
 
     @POST
@@ -39,6 +39,14 @@ public class BookingController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
+    public Booking updateBooking(@PathParam("id") Long id, Booking booking){
+        return bookingService.updateBooking(id, booking);
+    }
+
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("member")
     public void deleteBooking(@PathParam("id") Long id){
         bookingService.deleteBooking(id);
     }
