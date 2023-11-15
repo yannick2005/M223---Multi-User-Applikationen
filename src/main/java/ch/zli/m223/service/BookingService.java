@@ -32,7 +32,7 @@ public class BookingService {
     }
 
     @Transactional
-    public void delteBooking(Long id){
+    public void deleteBooking(Long id){
         Booking entity = entityManager.find(Booking.class, id);
         entityManager.remove(entity);
     }

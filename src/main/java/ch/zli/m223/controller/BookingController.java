@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
@@ -26,5 +24,22 @@ public class BookingController {
     @RolesAllowed("member")
     public List<Booking> getAllBookings(){
         return bookingService.listAll();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("member")
+    public Booking createBooking(Booking booking) {
+        return bookingService.createBooking(booking);
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"admin"})
+    public void deleteBooking(@PathParam("id") Long id){
+        bookingService.deleteBooking(id);
     }
 }

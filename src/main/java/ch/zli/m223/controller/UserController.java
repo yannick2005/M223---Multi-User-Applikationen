@@ -41,7 +41,6 @@ public class UserController {
         return userService.findUserById(id);
     }
 
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,7 +48,6 @@ public class UserController {
     public User createUser(User user) {
         return userService.createUser(user);
     }
-
 
     @PUT
     @Path("/{id}")
@@ -62,8 +60,8 @@ public class UserController {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"admin"})
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"admin"})
     public void deleteUser(@PathParam("id") long id) {
         userService.deleteUser(id);
     }
