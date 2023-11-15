@@ -33,7 +33,6 @@ public class UserController {
         return userService.listAll();
     }
 
-
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
