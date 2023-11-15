@@ -24,7 +24,7 @@ public class AuthentificationService {
     @Transactional
     public String login(String email, String password) {
         List<User> users = userService.listAll();
-        String jwt = "";
+        String jsonWebToken = "";
         for (User user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 String token = Jwt.issuer("https://example.com/issuer")
@@ -32,10 +32,10 @@ public class AuthentificationService {
                         .groups(user.getRole().getRole())
                         .expiresIn(Integer.MAX_VALUE)
                         .sign();
-                return jwt = token;
+                return jsonWebToken = token;
             }
         }
-        throw new IllegalArgumentException("UNAUTHORIZED");
+        throw new IllegalArgumentException("Unauthorized");
     }
 
     public Response logout(String token) {
