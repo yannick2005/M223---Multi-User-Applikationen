@@ -27,7 +27,6 @@ public class User {
     @NotEmpty
     private String email;
 
-    
     @Column(nullable = false)
     @NotEmpty
     private String password;
