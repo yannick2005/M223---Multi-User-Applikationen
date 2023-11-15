@@ -16,7 +16,7 @@ public class BookingService {
     EntityManager entityManager;
 
     public List<Booking> listAll(){
-        var query = entityManager.createQuery("FROM Booking", Booking.class)
+        var query = entityManager.createQuery("FROM Booking", Booking.class);
         return query.getResultList();
     }
 
