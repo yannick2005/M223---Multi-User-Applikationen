@@ -32,7 +32,9 @@ public class AuthentificationService {
                         .groups(user.getRole().getRole())
                         .expiresIn(Integer.MAX_VALUE)
                         .sign();
-                return jwt = token;
+                jwt = token;
+
+                return jwt;
             }
         }
         throw new IllegalArgumentException("Unauthorized");
