@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-import javax.annotation.security.PermitAll;
 
 @Path("/products")
 @Tag(name = "Canteen", description = "Handling of canteens")
@@ -31,7 +30,6 @@ public class CanteenController {
     @Path("/{id}")
     @RolesAllowed({"admin", "member"})
     @Produces(MediaType.APPLICATION_JSON)
-    @PermitAll
     public Canteen get(@PathParam("id") long id) {
         return canteenService.findById(id);
     }

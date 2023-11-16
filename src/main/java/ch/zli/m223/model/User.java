@@ -35,6 +35,7 @@ public class User {
     private int age;
 
     @ManyToOne(fetch = FetchType.LAZY)
+
     @JsonIgnore
     private Role role;
 
