@@ -31,6 +31,7 @@ public class UserService {
 
     @Transactional
     public User updateUser(Long id, User user) {
+        user.setId(id);
         return entityManager.merge(user);
     }
 
