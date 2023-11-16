@@ -31,7 +31,6 @@ public class AuthentificationResource {
             .statusCode(500);
     }
 
-
     @Test
     public void testPostRegisterInvalid() {
         given()
