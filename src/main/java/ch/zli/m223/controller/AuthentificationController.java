@@ -48,6 +48,7 @@ public class AuthentificationController {
 
         @POST
         @Path("/logout")
+        @PermitAll
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @Operation(summary = "log user out")

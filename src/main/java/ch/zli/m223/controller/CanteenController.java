@@ -29,6 +29,7 @@ public class CanteenController {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"admin", "member"})
     @Produces(MediaType.APPLICATION_JSON)
     @PermitAll
     public Canteen get(@PathParam("id") long id) {
