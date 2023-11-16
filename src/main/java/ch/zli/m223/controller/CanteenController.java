@@ -50,6 +50,6 @@ public class CanteenController {
     @RolesAllowed({"admin"})
     @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") long id) {
-        canteenService.deleteSnack(id);
+        canteenService.deleteCanteen(id);
     }
 }

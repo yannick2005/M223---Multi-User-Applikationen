@@ -29,16 +29,15 @@ public class CanteenService {
     }
 
     public Canteen findById(Long id){
-        var snack = entityManager.find(Canteen.class, id);
-        return snack;
+        var canteen = entityManager.find(Canteen.class, id);
+        return canteen;
     }
 
     @Transactional
-    public void deleteSnack(long id) {
-        var snack = entityManager.find(Canteen.class, id);
-        if (snack != null) {
-            entityManager.remove(snack);
+    public void deleteCanteen(long id) {
+        var canteen = entityManager.find(Canteen.class, id);
+        if (canteen != null) {
+            entityManager.remove(canteen);
         }
-    }
-    
+    }    
 }
