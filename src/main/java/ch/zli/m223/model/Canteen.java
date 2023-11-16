@@ -40,7 +40,6 @@ public class Canteen {
         this.price = price;
     }
 
-
     public List<User> getUsers() {
         return this.users;
     }
