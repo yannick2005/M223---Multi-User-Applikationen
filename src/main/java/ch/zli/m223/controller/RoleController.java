@@ -33,7 +33,6 @@ public class RoleController {
         }
 
         @POST
-        @Path("/create")
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @RolesAllowed("admin")
@@ -42,7 +41,7 @@ public class RoleController {
         }
 
         @PUT
-        @Path("/update/{id}")
+        @Path("/{id}")
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @RolesAllowed("admin")
@@ -51,7 +50,7 @@ public class RoleController {
         }
 
         @DELETE
-        @Path("/delete/{id}")
+        @Path("/{id}")
         @RolesAllowed("admin")
         public void deleteRole(@PathParam("id") Long id) {
             roleService.delete(id);

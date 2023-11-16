@@ -19,7 +19,7 @@ public class RoomController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin", "mitglied"})
+    @RolesAllowed({"admin", "member"})
     public List<Room> list() {
         return roomService.findAll();
     }
