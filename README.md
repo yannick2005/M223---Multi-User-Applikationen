@@ -20,18 +20,18 @@ Datenbankadministration
 Über http://localhost:5050 ist PgAdmin4 erreichbar. Damit lässt sich die Datenbank komfortabel verwalten. Der Benutzername lautet zli@example.com und das Passwort zli*123. Die Verbindung zur PostgreSQL-Datenbank muss zuerst mit folgenden Daten konfiguriert werden:
 
 ## Datenbank Setup
-- Host name/address:`db`
+- Host name/address: `db`
 - Port: `5432`
 - username: `postgres`
 - password: `postgres`
 
-# Test-Daten
+## Test-Daten
 Die Testdaten befinden sich in /src/main/resources/import.sql.
 
 ## Automatische Tests
 Die automatischen Tests können mit ./mvnw quarkus:test ausgeführt werden. Für die automatischen Tests wird nicht die PostgreSQL-Datenbank verwendet, sondern eine H2-Datenbank, welche sich  während der Ausführung im Arbeitsspeicherbefindet.
 
-## Mock Data
+## Mock Daten
 <table>
  <tr>
     <td><b style="font-size:15px">Admin</b></td>
@@ -44,7 +44,6 @@ Die automatischen Tests können mit ./mvnw quarkus:test ausgeführt werden. Für
 - `password` smallMichi123
     </td>
     <td>
-
 - `email` manu44@gmail.com
 - `password` Manuuu123
     </td>
