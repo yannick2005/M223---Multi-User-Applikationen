@@ -27,7 +27,7 @@ public class AuthentificationService {
         String jwt = "";
         for (User user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                String token = Jwt.issuer("https://example.com/issuer")
+                String token = Jwt.issuer("https://zli.example.com/issuer")
                         .upn(user.getEmail())
                         .groups(user.getRole().getRole())
                         .expiresIn(Integer.MAX_VALUE)
