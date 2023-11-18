@@ -29,23 +29,29 @@ public class ApplicationUser {
     @Size(min = 1, max = 20)
     private String lastname;
 
+    @Column
+    private Gender Gender;
+
     @Column(nullable = false)
     @Email
     @NotEmpty
     private String email;
-
+    
     @Column(nullable = false)
     @NotEmpty
     private String password;
     private int age;
-
+    
     @ManyToOne
     @Fetch(FetchMode.JOIN)
     private Booking booking;
-
+    
     @ManyToOne
     @Fetch(FetchMode.JOIN)
     private Role role;
+    
+    @Size(min = 1, max = 20)
+    private String description;
 
     @ManyToMany
     @JoinTable(
@@ -56,9 +62,6 @@ public class ApplicationUser {
     @JsonIgnoreProperties("users")
     @Fetch(FetchMode.JOIN)
     private Set<Canteen> canteens;
-
-    @Size(min = 1, max = 20)
-    private String description;
 
     public long getId() {
         return id;
@@ -82,6 +85,14 @@ public class ApplicationUser {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public ch.zli.m223.model.Gender getGender(){
+        return Gender;
+    }
+
+    public void setGender(ch.zli.m223.model.Gender gender){
+        Gender = gender;
     }
 
     public String getEmail() {
