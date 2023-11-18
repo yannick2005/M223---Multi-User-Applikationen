@@ -1,10 +1,12 @@
 package ch.zli.m223.model;
 
+import java.util.Set;
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "user_role")
@@ -13,9 +15,11 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String role;
+
     @OneToMany(mappedBy = "role")
-    @JsonIgnore
-    private List<User> users = new ArrayList<User>();
+    @JsonIgnoreProperties("role")
+    @Fetch(FetchMode.JOIN)
+    private Set<User> users;
 
     public int getId() {
         return id;
@@ -33,11 +37,11 @@ public class Role {
         this.role = role;
     }
 
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 }

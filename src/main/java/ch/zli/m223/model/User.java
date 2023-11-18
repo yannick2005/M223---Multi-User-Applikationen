@@ -9,8 +9,6 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "coworking_user")
 public class User {
@@ -40,7 +38,8 @@ public class User {
     @Fetch(FetchMode.JOIN)
     private Booking booking;
 
-    @JsonIgnore
+    @ManyToOne
+    @Fetch(FetchMode.JOIN)
     private Role role;
 
     @Size(min = 1, max = 20)
