@@ -26,7 +26,9 @@ public class Booking {
     private Set<User> user;
 
     @ManyToOne
+    @Fetch(FetchMode.JOIN)
     private Room room;
+
     private Date startDate;
     private Date endDate;
     private boolean halfDay;

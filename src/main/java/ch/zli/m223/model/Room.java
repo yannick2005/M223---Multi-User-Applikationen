@@ -1,29 +1,39 @@
 package ch.zli.m223.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "room")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(readOnly = true)
+    private Long id;
 
-    private int id;
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private boolean free;
 
     @OneToMany(mappedBy = "room")
+    @JsonIgnoreProperties("room")
     @Fetch(FetchMode.JOIN)
-    private Booking booking;
+    private Set<Booking> bookings;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,11 +57,11 @@ public class Room {
         return this.free;
     }
 
-    public Booking getBooking() {
-        return this.booking;
+    public Set<Booking> getBookings() {
+        return this.bookings;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
