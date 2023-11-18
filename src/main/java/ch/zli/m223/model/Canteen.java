@@ -25,8 +25,8 @@ public class Canteen {
     @Column
     private float price;
 
-    @ManyToMany(mappedBy = "canteens")
-    @JsonIgnoreProperties("canteens")
+    @ManyToMany(mappedBy = "canteen_users")
+    @JsonIgnoreProperties("canteen_users")
     @Fetch(FetchMode.JOIN)
     private Set<User> users;
 

@@ -37,8 +37,8 @@ public class Booking {
     @Column
     private boolean halfDay;
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
+    @OneToMany(mappedBy = "booking")
+    @JsonIgnoreProperties("booking")
     @Fetch(FetchMode.JOIN)
     private Set<User> user;
 
