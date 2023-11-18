@@ -54,7 +54,7 @@ public class Canteen {
     }
 
     public Set<ApplicationUser> getUsers() {
-        return this.users;
+        return users;
     }
 
     public void setUsers(Set<ApplicationUser> users) {

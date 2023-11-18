@@ -49,13 +49,13 @@ public class ApplicationUser {
 
     @ManyToMany
     @JoinTable(
-        name = "canteen_users",
-        joinColumns = @JoinColumn(name = "user_id"),
+        name = "user_canteens",
+        joinColumns = @JoinColumn(name = "applicationUser_id"),
         inverseJoinColumns = @JoinColumn(name = "canteen_id")
     )
     @JsonIgnoreProperties("users")
     @Fetch(FetchMode.JOIN)
-    private Set<Canteen> canteen;
+    private Set<Canteen> canteens;
 
     @Size(min = 1, max = 20)
     private String description;
@@ -116,6 +116,14 @@ public class ApplicationUser {
         this.description = description;
     }
 
+    public Booking getBooking(){
+        return booking;
+    }
+
+    public void setBooking(Booking booking){
+        this.booking = booking;
+    }
+
     public Role getRole(){
         return role;
     }
@@ -123,4 +131,13 @@ public class ApplicationUser {
     public void setRole(Role role){
         this.role = role;
     }
+
+    public Set<Canteen> getCanteens(){
+        return canteens;
+    }
+
+    public void setCanteens(Set<Canteen> canteens){
+        this.canteens = canteens;
+    }
+
 }
