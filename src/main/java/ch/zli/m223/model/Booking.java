@@ -12,11 +12,12 @@ public class Booking {
     private Long id;
     private String title;
     private String description;
-    private  Status Status;
+    private Status Status;
 
     @ManyToOne
     @JsonIgnore
     private User user;
+    @JoinTable(name = "user_booking", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "booking_id"))
 
     @ManyToOne
     private Room room;

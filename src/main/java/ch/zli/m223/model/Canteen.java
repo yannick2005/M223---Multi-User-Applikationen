@@ -13,8 +13,8 @@ public class Canteen {
     private long id;
     private String name;
     private float price;
-    @ManyToMany(mappedBy = "canteen")
-    private List<User> users = new ArrayList<User>();
+    // @ManyToMany(mappedBy = "canteen")
+    // private List<User> users = new ArrayList<User>();
 
     public long getId() {
         return id;
@@ -40,11 +40,11 @@ public class Canteen {
         this.price = price;
     }
 
-    public List<User> getUsers() {
-        return this.users;
-    }
+    // public List<User> getUsers() {
+    //     return this.users;
+    // }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+    // public void setUsers(List<User> users) {
+    //     this.users = users;
+    // }
 }

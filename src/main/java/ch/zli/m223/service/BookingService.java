@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 
 @ApplicationScoped
 public class BookingService {
+    
     @Inject
     EntityManager entityManager;
 
