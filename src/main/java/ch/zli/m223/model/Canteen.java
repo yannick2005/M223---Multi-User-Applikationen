@@ -1,8 +1,13 @@
 package ch.zli.m223.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "canteen")
@@ -13,8 +18,10 @@ public class Canteen {
     private long id;
     private String name;
     private float price;
-    // @ManyToMany(mappedBy = "canteen")
-    // private List<User> users = new ArrayList<User>();
+    @ManyToMany(mappedBy = "canteens")
+    @JsonIgnoreProperties("canteens")
+    @Fetch(FetchMode.JOIN)
+    private Set<User> users;
 
     public long getId() {
         return id;
@@ -40,11 +47,11 @@ public class Canteen {
         this.price = price;
     }
 
-    // public List<User> getUsers() {
-    //     return this.users;
-    // }
+    public Set<User> getUsers() {
+        return this.users;
+    }
 
-    // public void setUsers(List<User> users) {
-    //     this.users = users;
-    // }
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

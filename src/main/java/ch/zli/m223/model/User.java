@@ -1,5 +1,7 @@
 package ch.zli.m223.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +10,8 @@ import javax.validation.constraints.Size;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "coworking_user")
@@ -41,6 +45,16 @@ public class User {
     @ManyToOne
     @Fetch(FetchMode.JOIN)
     private Role role;
+
+    @ManyToMany
+    @JoinTable(
+        name = "canteen_users",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "canteen_id")
+    )
+    @JsonIgnoreProperties("users")
+    @Fetch(FetchMode.JOIN)
+    private Set<Canteen> canteen;
 
     @Size(min = 1, max = 20)
     private String description;
