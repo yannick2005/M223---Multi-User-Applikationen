@@ -10,7 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/products")
+@Path("/product")
 @Tag(name = "Canteen", description = "Handling of canteens")
 
 public class CanteenController {
