@@ -3,6 +3,7 @@ package ch.zli.m223.model;
 import java.util.Set;
 import javax.persistence.*;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -13,7 +14,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(readOnly = true)
     private int id;
+
+    @Column
     private String role;
 
     @OneToMany(mappedBy = "role")

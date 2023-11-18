@@ -2,6 +2,7 @@ package ch.zli.m223.model;
 
 import javax.persistence.*;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -15,10 +16,26 @@ import java.util.Set;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(readOnly = true)
     private Long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column
     private String description;
+
+    @Column
     private Status Status;
+
+    @Column
+    private Date startDate;
+
+    @Column
+    private Date endDate;
+
+    @Column
+    private boolean halfDay;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
@@ -29,9 +46,6 @@ public class Booking {
     @Fetch(FetchMode.JOIN)
     private Room room;
 
-    private Date startDate;
-    private Date endDate;
-    private boolean halfDay;
 
     public Long getId() {
         return id;

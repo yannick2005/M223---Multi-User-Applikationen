@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -15,9 +16,15 @@ public class Canteen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(readOnly = true)
     private long id;
+
+    @Column
     private String name;
+
+    @Column
     private float price;
+
     @ManyToMany(mappedBy = "canteens")
     @JsonIgnoreProperties("canteens")
     @Fetch(FetchMode.JOIN)

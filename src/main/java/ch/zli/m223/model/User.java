@@ -26,9 +26,11 @@ public class User {
     @Size(min = 1, max = 20)
     private String firstname;
 
+    @Column
     @Size(min = 1, max = 20)
     private String lastname;
 
+    @Column(nullable = false)
     @Email
     @NotEmpty
     private String email;
