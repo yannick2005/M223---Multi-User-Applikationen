@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "room")
 public class Room {
@@ -15,7 +18,8 @@ public class Room {
     private boolean free;
 
     @OneToMany(mappedBy = "room")
-    private List<Booking> booking = new ArrayList<Booking>();
+    @Fetch(FetchMode.JOIN)
+    private Booking booking;
 
     public int getId() {
         return id;
@@ -45,11 +49,11 @@ public class Room {
         return this.free;
     }
 
-    public List<Booking> getBooking() {
+    public Booking getBooking() {
         return this.booking;
     }
 
-    public void setBooking(List<Booking> booking) {
+    public void setBooking(Booking booking) {
         this.booking = booking;
     }
 }

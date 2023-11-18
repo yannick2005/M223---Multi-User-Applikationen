@@ -1,8 +1,14 @@
 package ch.zli.m223.model;
 
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "booking")
@@ -14,10 +20,10 @@ public class Booking {
     private String description;
     private Status Status;
 
-    @ManyToOne
-    @JsonIgnore
-    private User user;
-    @JoinTable(name = "user_booking", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "booking_id"))
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    @Fetch(FetchMode.JOIN)
+    private Set<User> user;
 
     @ManyToOne
     private Room room;
@@ -57,11 +63,11 @@ public class Booking {
         Status = status;
     }
 
-    public User getUser() {
+    public Set<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 
