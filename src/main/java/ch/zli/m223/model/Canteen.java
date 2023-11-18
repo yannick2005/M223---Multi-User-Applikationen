@@ -16,7 +16,7 @@ public class Canteen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
-    private long id;
+    private int id;
 
     @Column
     private String name;
@@ -29,11 +29,11 @@ public class Canteen {
     @Fetch(FetchMode.JOIN)
     private Set<ApplicationUser> users;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

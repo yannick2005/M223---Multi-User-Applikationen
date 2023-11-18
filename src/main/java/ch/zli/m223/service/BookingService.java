@@ -20,7 +20,7 @@ public class BookingService {
         return query.getResultList();
     }
 
-    public Booking findById(Long id) {
+    public Booking findById(int id) {
         return entityManager.find(Booking.class, id);
     }
 
@@ -31,13 +31,13 @@ public class BookingService {
     }    
 
     @Transactional
-    public Booking updateBooking(Long id, Booking booking) {
+    public Booking updateBooking(int id, Booking booking) {
         booking.setId(id);
         return entityManager.merge(booking);
     }
 
     @Transactional
-    public void deleteBooking(Long id) {
+    public void deleteBooking(int id) {
         Booking booking = entityManager.find(Booking.class, id);
         entityManager.remove(booking);
     }

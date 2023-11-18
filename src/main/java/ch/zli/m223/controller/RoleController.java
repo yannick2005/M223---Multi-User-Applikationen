@@ -28,7 +28,7 @@ public class RoleController {
         @Path("/{id}")
         @Produces(MediaType.APPLICATION_JSON)
         @RolesAllowed("admin")
-        public Role getRole(@PathParam("id") Long id) {
+        public Role getRole(@PathParam("id") int id) {
             return roleService.findById(id);
         }
 
@@ -45,14 +45,14 @@ public class RoleController {
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @RolesAllowed("admin")
-        public Role updateRole(@PathParam("id") Long id, Role role) {
+        public Role updateRole(@PathParam("id") int id, Role role) {
             return roleService.update(id, role);
         }
 
         @DELETE
         @Path("/{id}")
         @RolesAllowed("admin")
-        public void deleteRole(@PathParam("id") Long id) {
+        public void deleteRole(@PathParam("id") int id) {
             roleService.delete(id);
         }
 }

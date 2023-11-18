@@ -21,7 +21,7 @@ public class RoleService {
     }
 
     @Transactional
-    public Role findById(Long id) {
+    public Role findById(int id) {
         return entityManager.find(Role.class, id);
     }
 
@@ -32,14 +32,14 @@ public class RoleService {
     }
 
     @Transactional
-    public Role update(Long id, Role role) {
+    public Role update(int id, Role role) {
         Role entity = entityManager.find(Role.class, id);
         entity.setRole(role.getRole());
         return entity;
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(int id) {
         Role entity = entityManager.find(Role.class, id);
         entityManager.remove(entity);
     }

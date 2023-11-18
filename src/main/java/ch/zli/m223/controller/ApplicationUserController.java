@@ -36,7 +36,7 @@ public class ApplicationUserController {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public ApplicationUser getUser(@PathParam("id") long id) {
+    public ApplicationUser getUser(@PathParam("id") int id) {
         return userService.findUserById(id);
     }
 
@@ -53,7 +53,7 @@ public class ApplicationUserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public ApplicationUser updateUser(@PathParam("id") Long id, ApplicationUser user) {
+    public ApplicationUser updateUser(@PathParam("id") int id, ApplicationUser user) {
         return userService.updateUser(id, user);
     }
 
@@ -61,7 +61,7 @@ public class ApplicationUserController {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public void deleteUser(@PathParam("id") long id) {
+    public void deleteUser(@PathParam("id") int id) {
         userService.deleteUser(id);
     }
 }

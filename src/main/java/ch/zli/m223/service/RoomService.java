@@ -20,7 +20,7 @@ public class RoomService {
         return query.getResultList();
     }
 
-    public Room findById(Long id){
+    public Room findById(int id){
         return entityManager.find(Room.class, id);
     }
 
@@ -32,12 +32,12 @@ public class RoomService {
     }
 
     @Transactional
-    public Room updateRoom(Long id, Room room) {
+    public Room updateRoom(int id, Room room) {
         return entityManager.merge(room);
     }
 
     @Transactional
-    public void deleteRoom(Long id) {
+    public void deleteRoom(int id) {
         var bereich = entityManager.find(Room.class, id);
         entityManager.remove(bereich);
     }

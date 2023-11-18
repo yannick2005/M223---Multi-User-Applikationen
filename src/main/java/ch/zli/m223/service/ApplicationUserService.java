@@ -19,7 +19,7 @@ public class ApplicationUserService {
         return query.getResultList();
     }
 
-    public ApplicationUser findUserById(Long id) {
+    public ApplicationUser findUserById(int id) {
         return entityManager.find(ApplicationUser.class, id);
     }
 
@@ -30,13 +30,13 @@ public class ApplicationUserService {
     }
 
     @Transactional
-    public ApplicationUser updateUser(Long id, ApplicationUser user) {
+    public ApplicationUser updateUser(int id, ApplicationUser user) {
         user.setId(id);
         return entityManager.merge(user);
     }
 
     @Transactional
-    public void deleteUser(Long id) {
+    public void deleteUser(int id) {
         ApplicationUser entity = entityManager.find(ApplicationUser.class, id);
         entityManager.remove(entity);
     }

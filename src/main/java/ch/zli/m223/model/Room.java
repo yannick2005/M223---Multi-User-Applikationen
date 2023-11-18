@@ -15,7 +15,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String title;
@@ -28,11 +28,11 @@ public class Room {
     @Fetch(FetchMode.JOIN)
     private Set<Booking> bookings;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

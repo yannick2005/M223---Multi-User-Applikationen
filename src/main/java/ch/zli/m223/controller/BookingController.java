@@ -39,7 +39,7 @@ public class BookingController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public Booking updateBooking(@PathParam("id") Long id, Booking booking){
+    public Booking updateBooking(@PathParam("id") int id, Booking booking){
         return bookingService.updateBooking(id, booking);
     }
 
@@ -48,7 +48,7 @@ public class BookingController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin", "member"})
-    public void deleteBooking(@PathParam("id") Long id){
+    public void deleteBooking(@PathParam("id") int id){
         bookingService.deleteBooking(id);
     }
 }

@@ -16,7 +16,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String title;
@@ -46,11 +46,11 @@ public class Booking {
     private Room room;
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

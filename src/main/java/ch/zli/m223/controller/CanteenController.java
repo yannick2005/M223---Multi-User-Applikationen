@@ -30,7 +30,7 @@ public class CanteenController {
     @Path("/{id}")
     @RolesAllowed({"admin", "member"})
     @Produces(MediaType.APPLICATION_JSON)
-    public Canteen get(@PathParam("id") long id) {
+    public Canteen get(@PathParam("id") int id) {
         return canteenService.findById(id);
     }
 
@@ -48,7 +48,7 @@ public class CanteenController {
     @Path("{id}")
     @RolesAllowed({"admin"})
     @Produces(MediaType.APPLICATION_JSON)
-    public void delete(@PathParam("id") long id) {
+    public void delete(@PathParam("id") int id) {
         canteenService.deleteCanteen(id);
     }
 }

@@ -28,23 +28,24 @@ public class RoomController {
     @Path("/{id}")
     @RolesAllowed({"admin"})
     @Produces(MediaType.APPLICATION_JSON)
-    public Room find(@PathParam("id") Long id) {
+    public Room find(@PathParam("id") int id) {
         return roomService.findById(id);
     }
 
     @Path("/{id}")
     @RolesAllowed({"admin"})
     @PUT
-    public Room update(@PathParam("id") Long id, Room room){
+    public Room update(@PathParam("id") int id, Room room){
         return roomService.updateRoom(id, room);
     }
 
     @Path("/{id}")
     @RolesAllowed({"admin"})
     @DELETE
-    public void delete(@PathParam("id") Long id) {
+    public void delete(@PathParam("id") int id) {
         roomService.deleteRoom(id);
     }
+
     @POST
     @RolesAllowed({"admin"})
     @Produces(MediaType.APPLICATION_JSON)

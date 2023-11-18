@@ -19,7 +19,7 @@ public class ApplicationUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
-    private long id;
+    private int id;
 
     @Column(nullable = false)
     @Size(min = 1, max = 20)
@@ -63,11 +63,11 @@ public class ApplicationUser {
     @Fetch(FetchMode.JOIN)
     private Set<Canteen> canteens;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -27,13 +27,13 @@ public class CanteenService {
         return query.getResultList();
     }
 
-    public Canteen findById(Long id){
+    public Canteen findById(int id){
         var canteen = entityManager.find(Canteen.class, id);
         return canteen;
     }
 
     @Transactional
-    public void deleteCanteen(long id) {
+    public void deleteCanteen(int id) {
         var canteen = entityManager.find(Canteen.class, id);
         if (canteen != null) {
             entityManager.remove(canteen);

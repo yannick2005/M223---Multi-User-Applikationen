@@ -14,7 +14,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
-    private Long id;
+    private int id;
 
     @Column
     private String role;
@@ -24,11 +24,11 @@ public class Role {
     @Fetch(FetchMode.JOIN)
     private Set<ApplicationUser> users;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
