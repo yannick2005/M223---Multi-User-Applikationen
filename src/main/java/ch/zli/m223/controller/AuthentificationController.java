@@ -1,8 +1,8 @@
 package ch.zli.m223.controller;
 
-import ch.zli.m223.model.User;
+import ch.zli.m223.model.ApplicationUser;
 import ch.zli.m223.service.AuthentificationService;
-import ch.zli.m223.service.UserService;
+import ch.zli.m223.service.ApplicationUserService;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -21,7 +21,7 @@ public class AuthentificationController {
         AuthentificationService authentificationService;
 
         @Inject
-        UserService userService;
+        ApplicationUserService userService;
 
         @Inject
         JsonWebToken jwt; 
@@ -42,7 +42,7 @@ public class AuthentificationController {
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @Operation(summary = "create", description = "registered a new User")
-        public User register(User user) {
+        public ApplicationUser register(ApplicationUser user) {
             return userService.createUser(user);
         }
 

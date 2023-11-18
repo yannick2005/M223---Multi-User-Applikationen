@@ -10,7 +10,6 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "user_role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +22,7 @@ public class Role {
     @OneToMany(mappedBy = "role")
     @JsonIgnoreProperties("role")
     @Fetch(FetchMode.JOIN)
-    private Set<User> users;
+    private Set<ApplicationUser> users;
 
     public Long getId() {
         return id;
@@ -41,11 +40,11 @@ public class Role {
         this.role = role;
     }
 
-    public Set<User> getUsers() {
+    public Set<ApplicationUser> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Set<ApplicationUser> users) {
         this.users = users;
     }
 }

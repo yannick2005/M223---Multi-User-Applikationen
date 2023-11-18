@@ -9,23 +9,23 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
-import ch.zli.m223.model.User;
+import ch.zli.m223.model.ApplicationUser;
 
 import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
 public class AuthentificationService {
     @Inject
-    UserService userService;
+    ApplicationUserService userService;
 
     @Inject
     JsonWebToken jwt;
 
     @Transactional
     public String login(String email, String password) {
-        List<User> users = userService.listAll();
+        List<ApplicationUser> users = userService.listAll();
         String jwt = "";
-        for (User user : users) {
+        for (ApplicationUser user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 String token = Jwt.issuer("https://zli.example.com/issuer")
                         .upn(user.getEmail())

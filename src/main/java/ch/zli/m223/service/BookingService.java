@@ -15,9 +15,8 @@ public class BookingService {
     @Inject
     EntityManager entityManager;
 
-    @SuppressWarnings("unchecked")
     public List<Booking> findAll() {
-        var query = entityManager.createQuery("FROM Booking");
+        var query = entityManager.createQuery("FROM Booking", Booking.class);
         return query.getResultList();
     }
 

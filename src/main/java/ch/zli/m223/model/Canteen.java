@@ -11,7 +11,6 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "canteen")
 public class Canteen {
 
     @Id
@@ -25,10 +24,10 @@ public class Canteen {
     @Column
     private float price;
 
-    @ManyToMany(mappedBy = "canteen_users")
-    @JsonIgnoreProperties("canteen_users")
+    @ManyToMany(mappedBy = "canteens")
+    @JsonIgnoreProperties("canteens")
     @Fetch(FetchMode.JOIN)
-    private Set<User> users;
+    private Set<ApplicationUser> users;
 
     public long getId() {
         return id;
@@ -54,11 +53,11 @@ public class Canteen {
         this.price = price;
     }
 
-    public Set<User> getUsers() {
+    public Set<ApplicationUser> getUsers() {
         return this.users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Set<ApplicationUser> users) {
         this.users = users;
     }
 }

@@ -22,9 +22,8 @@ public class CanteenService {
         return canteen;
     }
 
-    @SuppressWarnings("unchecked")
     public List<Canteen> findAll() {
-        var query = entityManager.createQuery("FROM Canteen");
+        var query = entityManager.createQuery("FROM Canteen", Canteen.class);
         return query.getResultList();
     }
 

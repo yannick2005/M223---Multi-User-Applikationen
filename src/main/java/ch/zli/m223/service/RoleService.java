@@ -16,7 +16,8 @@ public class RoleService {
 
     @Transactional
     public List<Role> listAll() {
-        return entityManager.createQuery("FROM Role", Role.class).getResultList();
+        var query = entityManager.createQuery("FROM Role", Role.class);
+        return query.getResultList();
     }
 
     @Transactional

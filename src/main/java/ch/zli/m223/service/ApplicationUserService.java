@@ -1,6 +1,6 @@
 package ch.zli.m223.service;
 
-import ch.zli.m223.model.User;
+import ch.zli.m223.model.ApplicationUser;
 
 import java.util.List;
 
@@ -10,34 +10,34 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 @ApplicationScoped
-public class UserService {
+public class ApplicationUserService {
     @Inject
     EntityManager entityManager;
 
-    public List<User> listAll() {
-        var query = entityManager.createQuery("FROM User", User.class);
+    public List<ApplicationUser> listAll() {
+        var query = entityManager.createQuery("FROM ApplicationUser", ApplicationUser.class);
         return query.getResultList();
     }
 
-    public User findUserById(Long id) {
-        return entityManager.find(User.class, id);
+    public ApplicationUser findUserById(Long id) {
+        return entityManager.find(ApplicationUser.class, id);
     }
 
     @Transactional
-    public User createUser(User user) {
+    public ApplicationUser createUser(ApplicationUser user) {
         entityManager.persist(user);
         return user;
     }
 
     @Transactional
-    public User updateUser(Long id, User user) {
+    public ApplicationUser updateUser(Long id, ApplicationUser user) {
         user.setId(id);
         return entityManager.merge(user);
     }
 
     @Transactional
     public void deleteUser(Long id) {
-        User entity = entityManager.find(User.class, id);
+        ApplicationUser entity = entityManager.find(ApplicationUser.class, id);
         entityManager.remove(entity);
     }
 }

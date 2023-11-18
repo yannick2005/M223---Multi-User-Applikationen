@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "booking")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +39,7 @@ public class Booking {
     @OneToMany(mappedBy = "booking")
     @JsonIgnoreProperties("booking")
     @Fetch(FetchMode.JOIN)
-    private Set<User> user;
+    private Set<ApplicationUser> user;
 
     @ManyToOne
     @Fetch(FetchMode.JOIN)
@@ -79,11 +78,11 @@ public class Booking {
         Status = status;
     }
 
-    public Set<User> getUser() {
+    public Set<ApplicationUser> getUser() {
         return user;
     }
 
-    public void setUser(Set<User> user) {
+    public void setUser(Set<ApplicationUser> user) {
         this.user = user;
     }
 

@@ -1,7 +1,7 @@
 package ch.zli.m223.controller;
 
-import ch.zli.m223.model.User;
-import ch.zli.m223.service.UserService;
+import ch.zli.m223.model.ApplicationUser;
+import ch.zli.m223.service.ApplicationUserService;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -12,15 +12,15 @@ import java.util.List;
 
 @Path("/user")
 @Tag(name = "User", description = "Handling of users")
-public class UserController {
+public class ApplicationUserController {
     @Inject
-    UserService userService;
+    ApplicationUserService userService;
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed("admin")
-    public List<User> getAllUsers() {
+    public List<ApplicationUser> getAllUsers() {
         return userService.listAll();
     }
 
@@ -28,7 +28,7 @@ public class UserController {
     @Path("/others")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed("member")
-    public List<User> seeAllMembers() {
+    public List<ApplicationUser> seeAllMembers() {
         return userService.listAll();
     }
 
@@ -36,7 +36,7 @@ public class UserController {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public User getUser(@PathParam("id") long id) {
+    public ApplicationUser getUser(@PathParam("id") long id) {
         return userService.findUserById(id);
     }
 
@@ -44,7 +44,7 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public User createUser(User user) {
+    public ApplicationUser createUser(ApplicationUser user) {
         return userService.createUser(user);
     }
 
@@ -53,7 +53,7 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
-    public User updateUser(@PathParam("id") Long id, User user) {
+    public ApplicationUser updateUser(@PathParam("id") Long id, ApplicationUser user) {
         return userService.updateUser(id, user);
     }
 
