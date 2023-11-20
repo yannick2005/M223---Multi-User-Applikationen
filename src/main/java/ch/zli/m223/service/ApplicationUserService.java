@@ -30,12 +30,12 @@ public class ApplicationUserService {
         Role role = new Role();
         if (allUsers == null || allUsers.isEmpty()){
             role.setRoleName("admin");
-            user.setRole(role);
         }
         else {
             role.setRoleName("member");
-            user.setRole(role);
         }
+        entityManager.persist(role);
+        user.setRole(role);
         entityManager.persist(user);
         return user;
     }

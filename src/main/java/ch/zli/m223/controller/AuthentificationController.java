@@ -18,6 +18,8 @@ import javax.ws.rs.core.Response;
 public class AuthentificationController {
         @Inject
         AuthentificationService authentificationService;
+        
+        @Inject
         ApplicationUserService userService;
 
         @POST

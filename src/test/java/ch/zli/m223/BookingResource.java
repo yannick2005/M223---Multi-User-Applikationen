@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 public class BookingResource {
-    String adminJwt = "";
+    String adminJwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3psaS5leGFtcGxlLmNvbS9pc3N1ZXIiLCJ1cG4iOiJub2JvZHlAZXhhbXBsZS5jb20iLCJncm91cHMiOlsiY2guemxpLm0yMjMubW9kZWwuUm9sZUA0ZGJlMmYxMiJdLCJpYXQiOjE3MDA0OTQyMTcsImV4cCI6MTcwMDU4MDYxNywianRpIjoiZmZkYWM1ZjItY2QxZS00MDgyLWIzMzgtNzQxYjkxMDljYjYyIn0.sr-FcB-zPLiewOi0aNnfqYkpTy5nv0vK8OZPHDjgYl7cqiQTbxP7oZc3D2_ylhhulEdRgCCVh3eT74-Yvom0hFrknE76PWx7rI5K83XCWBAn8MLAqANo-rUfxgwdhN6HSMOcCUx3p1zpg1ImvcaPDGsJUcpGPUt7BFQJPEW0TaAcgaU4gLbgJLz4GdFCqAy0SjD9ku839x2etxP3VlBtz0ISpahA5XikhyLnAUYtOH884kjLTRrgmIryDiRUj2BIc8WsEkfQ8TyTPC7oP205w7Yeq1PLoLENoe_ccwP4xIpYVdaw4yTK7A_iCw-fMC8j90R1Hy7dNMMe0-QYjOeY_g ";
     String memberJwt = "";
 
     @Test
