@@ -29,11 +29,11 @@ public class ApplicationUserService {
         List<ApplicationUser> allUsers = listAll();
         Role role = new Role();
         if (allUsers == null || allUsers.isEmpty()){
-            role.nameRole("admin");
+            role.setRole("admin");
             user.setRole(role); // Should be role admin as string
         }
-        else{
-            role.nameRole("member");
+        else {
+            role.setRole("member");
             user.setRole(role); // Should be role member as string
         }
         entityManager.persist(user);
