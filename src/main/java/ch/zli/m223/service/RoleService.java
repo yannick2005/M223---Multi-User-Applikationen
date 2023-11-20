@@ -35,7 +35,7 @@ public class RoleService {
     public Role update(int id, Role role) {
         Role entity = entityManager.find(Role.class, id);
         String roleAsString = role.toString();
-        entity.nameRole(roleAsString);
+        entity.setRoleName(roleAsString);
         return entity;
     }
 
