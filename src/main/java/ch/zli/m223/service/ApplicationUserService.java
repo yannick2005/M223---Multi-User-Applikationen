@@ -1,6 +1,7 @@
 package ch.zli.m223.service;
 
 import ch.zli.m223.model.ApplicationUser;
+import ch.zli.m223.model.Role;
 
 import java.util.List;
 
@@ -25,6 +26,16 @@ public class ApplicationUserService {
 
     @Transactional
     public ApplicationUser createUser(ApplicationUser user) {
+        List<ApplicationUser> allUsers = listAll();
+        Role role = new Role();
+        if (allUsers == null || allUsers.isEmpty()){
+            role.nameRole("admin");
+            user.setRole(role); // Should be role admin as string
+        }
+        else{
+            role.nameRole("member");
+            user.setRole(role); // Should be role member as string
+        }
         entityManager.persist(user);
         return user;
     }

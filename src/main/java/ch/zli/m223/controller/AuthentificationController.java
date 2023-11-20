@@ -4,7 +4,6 @@ import ch.zli.m223.model.ApplicationUser;
 import ch.zli.m223.service.AuthentificationService;
 import ch.zli.m223.service.ApplicationUserService;
 
-import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
@@ -19,12 +18,7 @@ import javax.ws.rs.core.Response;
 public class AuthentificationController {
         @Inject
         AuthentificationService authentificationService;
-
-        @Inject
         ApplicationUserService userService;
-
-        @Inject
-        JsonWebToken jwt; 
 
         @POST
         @Path("/login")
@@ -32,7 +26,7 @@ public class AuthentificationController {
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @Operation(summary = "logs the user in")
-        public String login(@QueryParam("email")String email, @QueryParam("password") String password) {
+        public Response login(@QueryParam("email")String email, @QueryParam("password") String password) {
             return authentificationService.login(email, password);
         }
 
@@ -53,6 +47,6 @@ public class AuthentificationController {
         @Produces(MediaType.APPLICATION_JSON)
         @Operation(summary = "log user out")
         public Response logout(String token) {
-            return Response.ok(authentificationService.logout(token)).build();
+            return authentificationService.logout(token);
         }
 }

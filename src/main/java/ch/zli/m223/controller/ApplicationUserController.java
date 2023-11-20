@@ -4,7 +4,9 @@ import ch.zli.m223.model.ApplicationUser;
 import ch.zli.m223.service.ApplicationUserService;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import javax.resource.spi.work.SecurityContext;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -23,7 +25,8 @@ public class ApplicationUserController {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "gets all users")
     @RolesAllowed("admin")
-    public List<ApplicationUser> getAllUsers() {
+    public List<ApplicationUser> getAllUsers(@Context SecurityContext user) {
+        user.getName();
         return userService.listAll();
     }
 

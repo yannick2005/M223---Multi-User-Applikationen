@@ -1,10 +1,14 @@
 package ch.zli.m223.service;
 
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
@@ -22,19 +26,26 @@ public class AuthentificationService {
     JsonWebToken jwt;
 
     @Transactional
-    public String login(String email, String password) {
+    public Response login(String email, String password) {
         List<ApplicationUser> users = userService.listAll();
-        String jwt = "";
         for (ApplicationUser user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                String token = Jwt.issuer("https://zli.example.com/issuer")
-                        .upn(user.getEmail())
-                        .groups(user.getRole().getRole())
-                        .expiresIn(Integer.MAX_VALUE)
-                        .sign();
-                jwt = token;
+                String userRoleAsString = user.getRole().toString();
+                if (userRoleAsString == null || !userRoleAsString.isEmpty()) {
+                    String token = Jwt.issuer("https://zli.example.com/issuer")
+                            .upn(user.getEmail())
+                            .groups(new HashSet<>(Arrays.asList(userRoleAsString))) // A user can only have one role at a time.
+                            .expiresIn(Duration.ofHours(24))
+                            .sign();
 
-                return jwt;
+                    return Response
+                            .ok(user)
+                            .cookie(new NewCookie("coworkingspace: ", token))
+                            .header("Authorization", "Bearer " + token)
+                            .build();
+                } else {
+                    throw new IllegalArgumentException("User does not have a role");
+                }
             }
         }
         throw new IllegalArgumentException("Unauthorized");
