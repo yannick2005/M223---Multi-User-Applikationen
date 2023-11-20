@@ -20,6 +20,7 @@ public class RoomController {
     private RoomService roomService;
 
     @GET
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "gets all rooms")
     @RolesAllowed({ "admin", "member" })

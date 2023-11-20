@@ -39,7 +39,6 @@ public class CanteenController {
     }
 
     @POST
-    @Path("")
     @RolesAllowed({ "admin" })
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
