@@ -6,6 +6,8 @@ import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class ApplicationUserController {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "gets all users")
     @RolesAllowed("admin")
     public List<ApplicationUser> getAllUsers() {
         return userService.listAll();
@@ -27,6 +30,7 @@ public class ApplicationUserController {
     @GET
     @Path("/others")
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "gets all members")
     @RolesAllowed("member")
     public List<ApplicationUser> seeAllMembers() {
         return userService.listAll();
@@ -35,7 +39,8 @@ public class ApplicationUserController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
+    @Operation(summary = "gets a user by id")
+    @RolesAllowed({ "admin" })
     public ApplicationUser getUser(@PathParam("id") int id) {
         return userService.findUserById(id);
     }
@@ -43,7 +48,8 @@ public class ApplicationUserController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
+    @Operation(summary = "creates a user")
+    @RolesAllowed({ "admin" })
     public ApplicationUser createUser(ApplicationUser user) {
         return userService.createUser(user);
     }
@@ -52,7 +58,8 @@ public class ApplicationUserController {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
+    @Operation(summary = "updates a user")
+    @RolesAllowed({ "admin" })
     public ApplicationUser updateUser(@PathParam("id") int id, ApplicationUser user) {
         return userService.updateUser(id, user);
     }
@@ -60,7 +67,8 @@ public class ApplicationUserController {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
+    @Operation(summary = "deletes a user")
+    @RolesAllowed({ "admin" })
     public void deleteUser(@PathParam("id") int id) {
         userService.deleteUser(id);
     }

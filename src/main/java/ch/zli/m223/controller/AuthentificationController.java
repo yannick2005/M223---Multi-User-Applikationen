@@ -31,7 +31,7 @@ public class AuthentificationController {
         @PermitAll
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
-        @Operation(summary = "checks the data")
+        @Operation(summary = "logs the user in")
         public String login(@QueryParam("email")String email, @QueryParam("password") String password) {
             return authentificationService.login(email, password);
         }
@@ -41,7 +41,7 @@ public class AuthentificationController {
         @PermitAll
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
-        @Operation(summary = "create", description = "registered a new User")
+        @Operation(summary = "create user", description = "registered a new User")
         public ApplicationUser register(ApplicationUser user) {
             return userService.createUser(user);
         }

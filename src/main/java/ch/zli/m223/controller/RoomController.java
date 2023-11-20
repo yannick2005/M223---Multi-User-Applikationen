@@ -9,6 +9,8 @@ import ch.zli.m223.service.RoomService;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 @Path("/room")
@@ -19,38 +21,45 @@ public class RoomController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin", "member"})
+    @Operation(summary = "gets all rooms")
+    @RolesAllowed({ "admin", "member" })
     public List<Room> list() {
         return roomService.findAll();
     }
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"admin"})
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "get room by id")
+    @RolesAllowed({ "admin" })
     public Room find(@PathParam("id") int id) {
         return roomService.findById(id);
     }
 
-    @Path("/{id}")
-    @RolesAllowed({"admin"})
-    @PUT
-    public Room update(@PathParam("id") int id, Room room){
-        return roomService.updateRoom(id, room);
-    }
-
-    @Path("/{id}")
-    @RolesAllowed({"admin"})
-    @DELETE
-    public void delete(@PathParam("id") int id) {
-        roomService.deleteRoom(id);
-    }
-
     @POST
-    @RolesAllowed({"admin"})
+    @RolesAllowed({ "admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Room create(Room room) {
         return roomService.createRoom(room);
     }
+
+    @PUT
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "update room")
+    @RolesAllowed({ "admin" })
+    public Room update(@PathParam("id") int id, Room room) {
+        return roomService.updateRoom(id, room);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "delete room")
+    @RolesAllowed({ "admin" })
+    public void delete(@PathParam("id") int id) {
+        roomService.deleteRoom(id);
+    }
+
 }

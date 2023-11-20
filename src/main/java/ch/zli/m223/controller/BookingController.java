@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import ch.zli.m223.model.Booking;
@@ -21,15 +22,17 @@ public class BookingController {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin", "member"})
-    public List<Booking> getAllBookings(){
+    @Operation(summary = "gets all bookings")
+    @RolesAllowed({ "admin", "member" })
+    public List<Booking> getAllBookings() {
         return bookingService.findAll();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin", "member"})
+    @Operation(summary = "create booking")
+    @RolesAllowed({ "admin", "member" })
     public Booking createBooking(Booking booking) {
         return bookingService.createBooking(booking);
     }
@@ -38,8 +41,9 @@ public class BookingController {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
-    public Booking updateBooking(@PathParam("id") int id, Booking booking){
+    @Operation(summary = "update  booking")
+    @RolesAllowed({ "admin" })
+    public Booking updateBooking(@PathParam("id") int id, Booking booking) {
         return bookingService.updateBooking(id, booking);
     }
 
@@ -47,8 +51,9 @@ public class BookingController {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin", "member"})
-    public void deleteBooking(@PathParam("id") int id){
+    @Operation(summary = "deletes booking")
+    @RolesAllowed({ "admin", "member" })
+    public void deleteBooking(@PathParam("id") int id) {
         bookingService.deleteBooking(id);
     }
 }
