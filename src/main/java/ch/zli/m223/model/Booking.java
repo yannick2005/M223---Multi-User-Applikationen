@@ -21,19 +21,19 @@ public class Booking {
     @Column(nullable = false)
     private String title;
 
-    @Column
+    @Column(nullable = true)
     private String description;
 
-    @Column
+    @Column(nullable = false)
     private Status Status;
 
-    @Column
+    @Column(nullable = false)
     private Date startDate;
 
-    @Column
+    @Column(nullable = false)
     private Date endDate;
 
-    @Column
+    @Column(nullable = false)
     private boolean halfDay;
 
     @OneToMany(mappedBy = "booking")

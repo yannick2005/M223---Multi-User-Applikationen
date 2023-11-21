@@ -16,7 +16,7 @@ public class Role {
     @Schema(readOnly = true)
     private int id;
 
-    @Column
+    @Column(nullable = false)
     private String role;
 
     @OneToMany(mappedBy = "role")

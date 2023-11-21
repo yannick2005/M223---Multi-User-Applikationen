@@ -29,7 +29,7 @@ public class ApplicationUser {
     @Size(min = 1, max = 20)
     private String lastname;
 
-    @Column
+    @Column(nullable = false)
     private Gender Gender;
 
     @Column(nullable = false)
@@ -40,6 +40,8 @@ public class ApplicationUser {
     @Column(nullable = false)
     @NotEmpty
     private String password;
+
+    @Column(nullable = true)
     private int age;
 
     @ManyToOne
