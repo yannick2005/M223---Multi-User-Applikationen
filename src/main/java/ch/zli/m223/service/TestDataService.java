@@ -32,6 +32,10 @@ public class TestDataService {
         memberRole.setRoleName("member");
         entityManager.persist(memberRole);
 
+        Role userRole = new Role(); // Only made to delete it in postman again, since role with relations are not allowed to be deleted nor updated.
+        userRole.setRoleName("user");
+        entityManager.persist(userRole);
+
         Room room = new Room();
         room.setTitle("Uranus");
         room.setFree(true);
@@ -84,5 +88,14 @@ public class TestDataService {
         memberBooking.setStatus(Status.PENDING);
         memberBooking.setUser(new HashSet<>(Arrays.asList(memberUser)));
         entityManager.persist(memberBooking);
+
+        Booking unusedBooking = new Booking(); // Also only made to delete it in postman again
+        Date thirdStartDate = new Date(2);
+        Date thirdEndDate = new Date(2);
+        unusedBooking.setTitle("unusedBooking");
+        unusedBooking.setStartDate(thirdStartDate);
+        unusedBooking.setEndDate(thirdEndDate);
+        unusedBooking.setStatus(Status.DECLINED);
+        entityManager.persist(unusedBooking);
     }
 }
