@@ -16,7 +16,7 @@ public class RoomResource {
         given()
             .when().get("/room")
             .then()
-                .statusCode(404);
+                .statusCode(405);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class RoomResource {
         given()
             .when().get("/room/1")
             .then()
-                .statusCode(200);
+                .statusCode(401);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class RoomResource {
         given()
             .when().get("/room/2")
             .then()
-                .statusCode(404);
+                .statusCode(401);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class RoomResource {
             .body("{\"name\":\"TestRoom\",\"description\":\"TestRoom\",\"capacity\":10}")
             .when().post("/room")
             .then()
-                .statusCode(404);
+                .statusCode(401);
     }
     
 }

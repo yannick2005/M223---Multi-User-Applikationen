@@ -44,7 +44,7 @@ public class TestDataService {
         ApplicationUser adminUser = new ApplicationUser();
         adminUser.setFirstname("Sven");
         adminUser.setLastname("Svenson");
-        adminUser.setEmail("s.svenson@exampl.ecom");
+        adminUser.setEmail("s.svenson@example.com");
         adminUser.setPassword("Sui");
         adminUser.setGender(Gender.MALE);
         adminUser.setAge(18);
@@ -54,7 +54,7 @@ public class TestDataService {
         ApplicationUser memberUser = new ApplicationUser();
         memberUser.setFirstname("Manu");
         memberUser.setLastname("Manuelson");
-        memberUser.setEmail("s.manuelson@exampl.ecom");
+        memberUser.setEmail("m.manuelson@example.com");
         memberUser.setPassword("Mui");
         memberUser.setGender(Gender.MALE);
         memberUser.setAge(18);

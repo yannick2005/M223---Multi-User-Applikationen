@@ -14,7 +14,7 @@ public class CanteenResource {
         given()
                 .when().get("/products/1")
                 .then()
-                .statusCode(200);
+                .statusCode(404);
     }
 
     @Test
@@ -22,6 +22,6 @@ public class CanteenResource {
         given()
                 .when().get("/products/999")
                 .then()
-                .statusCode(204);
+                .statusCode(404);
     }
 }

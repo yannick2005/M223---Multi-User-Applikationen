@@ -44,7 +44,8 @@ public class AuthentificationResource {
     @Test
     public void testPostRegisterValid() {
         given()
-        .body("{\"firstname\":\"yannick\",\"lastname\":\"Schönhaar\", \"age\":\"18\",\"description\":\"Nobody\", \"email\":\"y.schoenhaar@example.com\", \"password\":\"Nobody\"}")
+        
+        .body("{\"firstname\":\"yannick\",\"lastname\":\"Schönhaar\", \"age\":\"18\",\"description\":\"Nobody\", \"email\":\"y.schoenhaar@example.com\", \"password\":\"Nobody\", \"gender\": \"Male\"},")
 
         .contentType(ContentType.JSON)
         .when()
