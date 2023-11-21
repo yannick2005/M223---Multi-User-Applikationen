@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 public class ApplicationUserService {
     @Inject
     EntityManager entityManager;
+    // private Boolean isFirstTime = true; // I made this because the user table will not be empty after the implementation of the testData.
 
     public List<ApplicationUser> listAll() {
         var query = entityManager.createQuery("FROM ApplicationUser", ApplicationUser.class);
@@ -28,7 +29,7 @@ public class ApplicationUserService {
     public ApplicationUser createUser(ApplicationUser user) {
         List<ApplicationUser> allUsers = listAll();
         Role role = new Role();
-        if (allUsers == null || allUsers.isEmpty()){
+        if (allUsers == null || allUsers.isEmpty() /*|| isFirstTime*/){ // Just a double check.
             role.setRoleName("admin");
         }
         else {

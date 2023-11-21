@@ -28,7 +28,7 @@ public class AuthentificationController {
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         @Operation(summary = "logs the user in")
-        public Response login(@QueryParam("email")String email, @QueryParam("password") String password) {
+        public Response login(@QueryParam("email") String email, @QueryParam("password") String password) {
             return authentificationService.login(email, password);
         }
 
