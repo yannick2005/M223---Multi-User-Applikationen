@@ -58,8 +58,8 @@ public class AuthentificationResource {
         given()
             .contentType(ContentType.JSON)
             .when()
-                .get("/logout")
+                .get("/auth/logout")
             .then()
-            .statusCode(404);
+            .statusCode(405);
     }
 }
