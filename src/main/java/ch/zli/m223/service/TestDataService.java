@@ -41,6 +41,11 @@ public class TestDataService {
         room.setFree(true);
         entityManager.persist(room);
 
+        Room room2 = new Room();
+        room2.setTitle("Pluto");
+        room2.setFree(false);
+        entityManager.persist(room2);
+
         Canteen canteen = new Canteen();
         canteen.setName("Fiji");
         canteen.setPrice(5.5);

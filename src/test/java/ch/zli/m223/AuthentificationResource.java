@@ -16,7 +16,7 @@ public class AuthentificationResource {
         given()
             .contentType(ContentType.JSON)
             .when()
-                .post("/auth/login?email=M.Michersen@bluewin.com&password=smallMichi23")
+                .post("/auth/login?email=s.svenson%40example.com&password=Sui")
             .then()
             .statusCode(500);
     }
