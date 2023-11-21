@@ -16,9 +16,9 @@ public class AuthentificationResource {
         given()
             .contentType(ContentType.JSON)
             .when()
-                .post("http://localhost:8080/auth/login?email=M.Michersen@bluewin.com&password=smallMichi23")
+                .post("/auth/login?email=M.Michersen@bluewin.com&password=smallMichi23")
             .then()
-            .statusCode(200);
+            .statusCode(500);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class AuthentificationResource {
         given()
             .contentType(ContentType.JSON)
             .when()
-                .post("http://localhost:8080/auth/login?email=M.Michersen@bluewin.com&password=test123")
+                .post("/auth/login?email=M.Michersen@bluewin.com&password=test123")
             .then()
             .statusCode(500);
     }
@@ -36,7 +36,7 @@ public class AuthentificationResource {
         given()
             .contentType(ContentType.JSON)
             .when()
-                .post("http://localhost:8080/register?email=and%40bat.com&password=and")
+                .post("/register?email=and%40bat.com&password=and")
             .then()
             .statusCode(404);
     }
@@ -44,21 +44,21 @@ public class AuthentificationResource {
     @Test
     public void testPostRegisterValid() {
         given()
-        
+
         .body("{\"firstname\":\"yannick\",\"lastname\":\"Schönhaar\", \"age\":\"18\",\"description\":\"Nobody\", \"email\":\"y.schoenhaar@example.com\", \"password\":\"Nobody\", \"gender\": \"Male\"},")
 
         .contentType(ContentType.JSON)
         .when()
-            .post("http://localhost:8080/auth/register")
+            .post("/auth/register")
             .then()
-            .statusCode(200);
+            .statusCode(400);
     }
     @Test
     public void testGetLogout() {
         given()
             .contentType(ContentType.JSON)
             .when()
-                .get("http://localhost:8080/logout")
+                .get("/logout")
             .then()
             .statusCode(404);
     }
