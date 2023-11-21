@@ -20,6 +20,11 @@ public class BookingService {
         return query.getResultList();
     }
 
+    public List<Booking> findOwn() {
+        var query = entityManager.createQuery("FROM Booking", Booking.class);
+        return query.getResultList();
+    }
+
     public Booking findById(int id) {
         return entityManager.find(Booking.class, id);
     }

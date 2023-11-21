@@ -28,6 +28,15 @@ public class BookingController {
         return bookingService.findAll();
     }
 
+    @GET
+    @Path("/own")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "get own bookings")
+    @RolesAllowed({"admin", "member"})
+    public List<Booking> getOwnBooking() {
+        return bookingService.findOwn();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
