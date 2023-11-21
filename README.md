@@ -29,7 +29,7 @@ Datenbankadministration
 Die Testdaten befinden sich in /src/main/java/ch/zli/m223/service/TestDataService.java.
 
 ## Automatische Tests
-Die automatischen Tests können mit ./mvnw quarkus:test ausgeführt werden. Für die automatischen Tests wird nicht die PostgreSQL-Datenbank verwendet, sondern eine H2-Datenbank, welche sich  während der Ausführung im Arbeitsspeicherbefindet.
+Die automatischen Tests können mit `./mvnw quarkus:test` ausgeführt werden. Für die automatischen Tests wird nicht die PostgreSQL-Datenbank verwendet, sondern eine H2-Datenbank, welche sich  während der Ausführung im Arbeitsspeicherbefindet.
 
 ## Mock Daten
 <table>
