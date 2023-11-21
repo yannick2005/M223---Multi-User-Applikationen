@@ -31,21 +31,17 @@ public class AuthentificationService {
         for (ApplicationUser user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 String userRoleAsString = user.getRole().toString();
-                if (userRoleAsString == null || !userRoleAsString.isEmpty()) {
-                    String token = Jwt.issuer("https://zli.example.com/issuer")
-                            .upn(user.getEmail())
-                            .groups(new HashSet<>(Arrays.asList(userRoleAsString))) // A user can only have one role at a time.
-                            .expiresIn(Duration.ofHours(24))
-                            .sign();
+                String token = Jwt.issuer("https://zli.example.com/issuer")
+                        .upn(user.getEmail())
+                        .groups(new HashSet<>(Arrays.asList(userRoleAsString))) // A user can only have one role at a time.
+                        .expiresIn(Duration.ofHours(24))
+                        .sign();
 
-                    return Response
-                            .ok(user)
-                            .cookie(new NewCookie("coworkingspace: ", token))
-                            .header("Authorization", "Bearer " + token)
-                            .build();
-                } else {
-                    throw new IllegalArgumentException("User does not have a role");
-                }
+                return Response
+                        .ok(user)
+                        .cookie(new NewCookie("coworkingspace: ", token))
+                        .header("Authorization", "Bearer " + token)
+                        .build();
             }
         }
         throw new IllegalArgumentException("Unauthorized");
