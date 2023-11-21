@@ -14,14 +14,16 @@ public class CanteenResource {
     @Test
     public void testfindById() {
         given()
-                .when().get("/products/1")
+                .auth().oauth2(adminJwt)
+                .when().get("/product/1")
                 .then()
-                .statusCode(404);
+                .statusCode(200);
     }
 
     @Test
     public void testFindByIdInvalid() {
         given()
+                .auth().oauth2(adminJwt)
                 .when().get("/products/999")
                 .then()
                 .statusCode(404);
