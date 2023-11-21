@@ -36,27 +36,27 @@ public class ApplicationUser {
     @Email
     @NotEmpty
     private String email;
-    
+
     @Column(nullable = false)
     @NotEmpty
     private String password;
     private int age;
-    
+
     @ManyToOne
     @Fetch(FetchMode.JOIN)
     private Booking booking;
-    
+
     @ManyToOne
     @Fetch(FetchMode.JOIN)
     private Role role;
-    
+
     @Size(min = 1, max = 20)
     private String description;
 
     @ManyToMany
     @JoinTable(
-        name = "user_canteens",
-        joinColumns = @JoinColumn(name = "applicationUser_id"),
+        name = "user_canteens", 
+        joinColumns = @JoinColumn(name = "applicationUser_id"), 
         inverseJoinColumns = @JoinColumn(name = "canteen_id")
     )
     @JsonIgnoreProperties("users")
@@ -87,11 +87,11 @@ public class ApplicationUser {
         this.lastname = lastname;
     }
 
-    public ch.zli.m223.model.Gender getGender(){
+    public Gender getGender() {
         return Gender;
     }
 
-    public void setGender(ch.zli.m223.model.Gender gender){
+    public void setGender(Gender gender) {
         Gender = gender;
     }
 
@@ -127,27 +127,27 @@ public class ApplicationUser {
         this.description = description;
     }
 
-    public Booking getBooking(){
+    public Booking getBooking() {
         return booking;
     }
 
-    public void setBooking(Booking booking){
+    public void setBooking(Booking booking) {
         this.booking = booking;
     }
 
-    public Role getRole(){
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Role role){
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public Set<Canteen> getCanteens(){
+    public Set<Canteen> getCanteens() {
         return canteens;
     }
 
-    public void setCanteens(Set<Canteen> canteens){
+    public void setCanteens(Set<Canteen> canteens) {
         this.canteens = canteens;
     }
 
