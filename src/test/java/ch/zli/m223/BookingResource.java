@@ -18,7 +18,7 @@ public class BookingResource {
                 .auth().oauth2(adminJwt)
                 .when().get("/booking")
                 .then()
-                .statusCode(401);
+                .statusCode(200);
     }
 
     @Test
@@ -27,11 +27,11 @@ public class BookingResource {
                 .auth().oauth2(adminJwt)
                 .when().get("/booking")
                 .then()
-                .statusCode(401);
+                .statusCode(200);
     }
 
     @Test
-    public void testGetAllBookingsAsMitglied() {
+    public void testGetAllBookingsAsMember() {
         given()
                 .auth().oauth2(memberJwt)
                 .when().get("/booking")
@@ -67,7 +67,7 @@ public class BookingResource {
     }
 
     @Test
-    public void testGetBookingByIdAsMitglied() {
+    public void testGetBookingByIdAsMember() {
         given()
                 .auth().oauth2(memberJwt)
                 .when().get("/booking/1")

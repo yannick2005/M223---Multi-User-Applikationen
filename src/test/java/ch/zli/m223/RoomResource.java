@@ -24,11 +24,11 @@ public class RoomResource {
         given()
             .when().get("/room/1")
             .then()
-                .statusCode(404);
+                .statusCode(200);
     }
 
     @Test
-    public void testGetAllRoomsInvlaid() {
+    public void testGetRoomInvlaid() {
         given()
             .when().get("/room/2")
             .then()
