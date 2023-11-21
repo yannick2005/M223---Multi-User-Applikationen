@@ -32,7 +32,7 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
+    public String getName() {
         return role;
     }
 

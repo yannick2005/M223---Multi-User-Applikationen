@@ -26,6 +26,7 @@ public class RoleController {
     public List<Role> getAllRoles() {
         return roleService.listAll();
     }
+    
 
     @GET
     @Path("/{id}")

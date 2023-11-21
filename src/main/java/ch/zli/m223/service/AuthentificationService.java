@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import ch.zli.m223.model.ApplicationUser;
-
 import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
@@ -30,13 +29,12 @@ public class AuthentificationService {
         List<ApplicationUser> users = userService.listAll();
         for (ApplicationUser user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                String userRoleAsString = user.getRole().toString();
+                String userRoleAsString = user.getRole().getName();
                 String token = Jwt.issuer("https://zli.example.com/issuer")
                         .upn(user.getEmail())
                         .groups(new HashSet<>(Arrays.asList(userRoleAsString))) // A user can only have one role at a time.
                         .expiresIn(Duration.ofHours(24))
                         .sign();
-
                 return Response
                         .ok(user)
                         .cookie(new NewCookie("coworkingspace: ", token))
